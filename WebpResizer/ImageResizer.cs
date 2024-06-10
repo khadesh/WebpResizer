@@ -1,4 +1,5 @@
-﻿using SixLabors.ImageSharp.Formats.Webp;
+﻿using SixLabors.ImageSharp.Formats.Jpeg;
+using SixLabors.ImageSharp.Formats.Webp;
 
 namespace WebpResizer
 {
@@ -62,5 +63,20 @@ namespace WebpResizer
 				ResizeImage(file);
 			}
 		}
+		public static void ConvertToJpeg(string filename)
+		{
+			// Define the output JPEG filename
+			string jpegFilename = Path.Combine(Path.GetDirectoryName(filename),
+								  Path.GetFileNameWithoutExtension(filename) + ".jpg");
+
+			// Read the original WebP image
+			using (Image image = Image.Load(filename))
+			{
+				// Save the image as JPEG
+				image.Save(jpegFilename, new JpegEncoder());
+				Console.WriteLine($"Converted and saved: {jpegFilename}");
+			}
+		}
+
 	}
 }
