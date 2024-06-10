@@ -25,8 +25,8 @@ namespace WebpResizer
 			using (Image image = Image.Load(filename))
 			{
 				// Define the sizes and suffixes
-				var sizes = new int[] { 512, 256, 128, 64, 32 };
-				var suffixes = new string[] { "-512.webp", "-256.webp", "-128.webp", "-64.webp", "-32.webp" };
+				var sizes = new int[] { 1024, 512, 256, 128, 64, 32 };
+				var suffixes = new string[] { "-1024.webp", "-512.webp", "-256.webp", "-128.webp", "-64.webp", "-32.webp" };
 
 				// Process and save each resized image
 				for (int i = 0; i < sizes.Length; i++)
