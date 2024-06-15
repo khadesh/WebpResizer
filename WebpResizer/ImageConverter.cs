@@ -15,5 +15,14 @@ namespace WebpResizer
                 image.Save(pngFilePath, new PngEncoder());
             }
         }
+        public static void ConvertPngToWebP(string webpFilePath, string pngFilePath)
+        {
+            // Load the Png image
+            using (Image image = Image.Load(webpFilePath))
+            {
+                // Save the image as PNG
+                image.Save(pngFilePath, new WebpEncoder());
+            }
+        }
     }
 }

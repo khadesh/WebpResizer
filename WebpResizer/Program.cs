@@ -4,6 +4,7 @@ using WebpResizer;
 //ImageSplitter.SplitImageIntoQuadrants(@"C:\Users\pigsc\OneDrive\デスクトップ\img\coins.webp");
 
 // Example usage
-//string webpFilePath = @"C:\Users\pigsc\OneDrive\デスクトップ\img\treasurechest.webp";
-//string pngFilePath = @"C:\Users\pigsc\OneDrive\デスクトップ\img\treasurechest.png";
+string webpFilePath = @"C:\Users\pigsc\OneDrive\デスクトップ\img fix\ancient-dragon.webp";
+string pngFilePath = @"C:\Users\pigsc\OneDrive\デスクトップ\img fix\ancient-dragon.png";
 //ImageConverter.ConvertWebPToPng(webpFilePath, pngFilePath);
+ImageConverter.ConvertPngToWebP(pngFilePath, webpFilePath);
