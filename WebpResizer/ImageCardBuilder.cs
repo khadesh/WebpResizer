@@ -275,7 +275,7 @@ namespace WebpResizer
                     System.Drawing.Color paddingColor = originalImage.GetPixel(0, 0);
 
                     // Create a new bitmap with padding
-                    int padding = 70;
+                    int padding = 35;
                     Bitmap paddedImage = new Bitmap(originalImage.Width + 2 * padding, originalImage.Height + 2 * padding);
 
                     using (Graphics graphics = Graphics.FromImage(paddedImage))

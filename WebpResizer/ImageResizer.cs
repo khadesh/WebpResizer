@@ -1,4 +1,5 @@
 ﻿using SixLabors.ImageSharp.Formats.Jpeg;
+using SixLabors.ImageSharp.Formats.Png;
 using SixLabors.ImageSharp.Formats.Webp;
 
 namespace WebpResizer
@@ -7,8 +8,64 @@ namespace WebpResizer
 	/// This class was fully written using a few commands and chat GPT-4o.
 	/// </summary>
 	public class ImageResizer
-	{
-		public static void ResizeImage(string filename)
+    {
+        public static void ResizeImagePng(string filename)
+        {
+            // Define the new subfolder name
+            string subfolder = "resized";
+            string directory = Path.GetDirectoryName(filename);
+            string resizedDirectory = Path.Combine(directory, subfolder);
+
+            // Create the subfolder if it doesn't exist
+            if (!Directory.Exists(resizedDirectory))
+            {
+                Directory.CreateDirectory(resizedDirectory);
+            }
+
+            // Read the original image
+            using (Image image = Image.Load(filename))
+            {
+                // Define the sizes and suffixes
+                var sizes = new int[] { 1024, 512, 256, 128, 64, 32 };
+                var suffixes = new string[] { "-1024.png", "-512.png", "-256.png", "-128.png", "-64.png", "-32.png" };
+
+                // Process and save each resized image
+                for (int i = 0; i < sizes.Length; i++)
+                {
+                    string newFilename = Path.Combine(resizedDirectory,
+                                        Path.GetFileNameWithoutExtension(filename) + suffixes[i]);
+
+                    // Check if the file already exists
+                    if (!File.Exists(newFilename))
+                    {
+                        using (Image resizedImage = image.Clone(ctx => ctx.Resize(sizes[i], sizes[i])))
+                        {
+                            resizedImage.Save(newFilename, new PngEncoder());
+                            Console.WriteLine($"Saved: {newFilename}");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"File already exists: {newFilename}, skipping resize.");
+                    }
+                }
+            }
+        }
+
+        public static void ProcessDirectoryPng(string directoryPath)
+        {
+            // Get all .webp files in the directory
+            var webpFiles = Directory.GetFiles(directoryPath, "*.png");
+
+            // Call ResizeImage on each .webp file
+            foreach (var file in webpFiles)
+            {
+                Console.WriteLine($"Processing: {file}");
+                ResizeImagePng(file);
+            }
+        }
+
+        public static void ResizeImageWebp(string filename)
 		{
 			// Define the new subfolder name
 			string subfolder = "resized";
@@ -51,7 +108,7 @@ namespace WebpResizer
 			}
 		}
 
-		public static void ProcessDirectory(string directoryPath)
+		public static void ProcessDirectoryWebp(string directoryPath)
 		{
 			// Get all .webp files in the directory
 			var webpFiles = Directory.GetFiles(directoryPath, "*.webp");
@@ -60,7 +117,7 @@ namespace WebpResizer
 			foreach (var file in webpFiles)
 			{
 				Console.WriteLine($"Processing: {file}");
-				ResizeImage(file);
+                ResizeImageWebp(file);
 			}
 		}
 		public static void ConvertToJpeg(string filename)
