@@ -6,6 +6,8 @@ using WebpResizer;
 
 //ImageSplitter.SplitImageIntoQuadrants(@"C:\Users\pigsc\OneDrive\デスクトップ\img\coins.webp");
 
+AudioConverter.ConvertWavDirectoryToMp3(@"C:\Users\pigsc\OneDrive\デスクトップ\songs\");
+
 //// Example usage
 //string webpFilePath = @"C:\Users\pigsc\OneDrive\デスクトップ\img fix\zombiedragon5-512.webp";
 //string pngFilePath = @"C:\Users\pigsc\OneDrive\デスクトップ\img fix\zombiedragon5-512.png";
