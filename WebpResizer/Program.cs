@@ -6,7 +6,7 @@ using WebpResizer;
 
 //ImageSplitter.SplitImageIntoQuadrants(@"C:\Users\pigsc\OneDrive\デスクトップ\img\coins.webp");
 
-AudioConverter.ConvertWavDirectoryToMp3(@"C:\Users\pigsc\OneDrive\デスクトップ\songs\");
+//AudioConverter.ConvertWavDirectoryToMp3(@"C:\Users\pigsc\OneDrive\デスクトップ\songs\");
 
 //// Example usage
 //string webpFilePath = @"C:\Users\pigsc\OneDrive\デスクトップ\img fix\zombiedragon5-512.webp";
@@ -16,7 +16,9 @@ AudioConverter.ConvertWavDirectoryToMp3(@"C:\Users\pigsc\OneDrive\デスクト�
 
 //ImageConverter.ProcessDirectoryToPng(@"C:\Users\pigsc\OneDrive\デスクトップ\cards\", @"C:\Users\pigsc\OneDrive\デスクトップ\cards\png\");
 
-//ImageConverter.ProcessDirectoryToPng(@"C:\Users\pigsc\OneDrive\デスクトップ\ranks\", @"C:\Users\pigsc\OneDrive\デスクトップ\ranks\png\");
+//ImageConverter.ProcessDirectoryToPng(@"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\", @"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\pngs\");
+
+ImageResizer.ResizeImages66Percent(@"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\cards\", @"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\cards\compressed\");
 
 //int i = 0;
 //List<string> CardRules = new List<string>() {

@@ -1,6 +1,7 @@
 ﻿using SixLabors.ImageSharp.Formats.Jpeg;
 using SixLabors.ImageSharp.Formats.Png;
 using SixLabors.ImageSharp.Formats.Webp;
+using System.Drawing;
 
 namespace WebpResizer
 {
@@ -9,6 +10,44 @@ namespace WebpResizer
 	/// </summary>
 	public class ImageResizer
     {
+        public static void ResizeImages66Percent(string inputDir, string outputDir)
+        {
+            // Ensure the output directory exists
+            Directory.CreateDirectory(outputDir);
+
+            // Get all image files from the input directory
+            string[] imageFiles = Directory.GetFiles(inputDir, "*.*", SearchOption.AllDirectories);
+
+            foreach (var filePath in imageFiles)
+            {
+                try
+                {
+                    using (System.Drawing.Image originalImage = System.Drawing.Image.FromFile(filePath))
+                    {
+                        // Calculate the new dimensions
+                        int newWidth = (int)(originalImage.Width * 0.34);
+                        int newHeight = (int)(originalImage.Height * 0.34);
+
+                        // Create a new bitmap with the new dimensions
+                        using (Bitmap resizedImage = new Bitmap(originalImage, new System.Drawing.Size(newWidth, newHeight)))
+                        {
+                            // Create the output file path
+                            string outputFilePath = Path.Combine(outputDir, Path.GetFileName(filePath));
+
+                            // Save the resized image to the output directory
+                            resizedImage.Save(outputFilePath);
+                        }
+                    }
+
+                    Console.WriteLine($"Resized and saved: {Path.GetFileName(filePath)}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error processing {filePath}: {ex.Message}");
+                }
+            }
+        }
+
         public static void ResizeImagePng(string filename)
         {
             // Define the new subfolder name
@@ -23,7 +62,7 @@ namespace WebpResizer
             }
 
             // Read the original image
-            using (Image image = Image.Load(filename))
+            using (SixLabors.ImageSharp.Image image = SixLabors.ImageSharp.Image.Load(filename))
             {
                 // Define the sizes and suffixes
                 var sizes = new int[] { 1024, 512, 256, 128, 64, 32 };
@@ -38,7 +77,7 @@ namespace WebpResizer
                     // Check if the file already exists
                     if (!File.Exists(newFilename))
                     {
-                        using (Image resizedImage = image.Clone(ctx => ctx.Resize(sizes[i], sizes[i])))
+                        using (SixLabors.ImageSharp.Image resizedImage = image.Clone(ctx => ctx.Resize(sizes[i], sizes[i])))
                         {
                             resizedImage.Save(newFilename, new PngEncoder());
                             Console.WriteLine($"Saved: {newFilename}");
@@ -79,7 +118,7 @@ namespace WebpResizer
 			}
 
 			// Read the original image
-			using (Image image = Image.Load(filename))
+			using (SixLabors.ImageSharp.Image image = SixLabors.ImageSharp.Image.Load(filename))
 			{
 				// Define the sizes and suffixes
 				var sizes = new int[] { 1024, 512, 256, 128, 64, 32 };
@@ -94,7 +133,7 @@ namespace WebpResizer
 					// Check if the file already exists
 					if (!File.Exists(newFilename))
 					{
-						using (Image resizedImage = image.Clone(ctx => ctx.Resize(sizes[i], sizes[i])))
+						using (SixLabors.ImageSharp.Image resizedImage = image.Clone(ctx => ctx.Resize(sizes[i], sizes[i])))
 						{
 							resizedImage.Save(newFilename, new WebpEncoder());
 							Console.WriteLine($"Saved: {newFilename}");
@@ -127,7 +166,7 @@ namespace WebpResizer
 								  Path.GetFileNameWithoutExtension(filename) + ".jpg");
 
 			// Read the original WebP image
-			using (Image image = Image.Load(filename))
+			using (SixLabors.ImageSharp.Image image = SixLabors.ImageSharp.Image.Load(filename))
 			{
 				// Save the image as JPEG
 				image.Save(jpegFilename, new JpegEncoder());
