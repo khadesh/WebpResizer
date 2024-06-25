@@ -16,6 +16,7 @@ namespace WebpResizer
                 image.Save(pngFilePath, new PngEncoder());
             }
         }
+
         public static void ConvertWebPToJpg(string webpFilePath, string pngFilePath)
         {
             // Load the WebP image
@@ -25,6 +26,7 @@ namespace WebpResizer
                 image.Save(pngFilePath, new JpegEncoder());
             }
         }
+
         public static void ConvertPngToWebP(string webpFilePath, string pngFilePath)
         {
             // Load the Png image
@@ -44,7 +46,20 @@ namespace WebpResizer
             foreach (var file in webpFiles)
             {
                 Console.WriteLine($"Processing: {file}");
-                ConvertWebPToJpg(file, file.Replace(directoryPath, toDirPath).Replace(".webp", ".png"));
+                ConvertWebPToPng(file, file.Replace(directoryPath, toDirPath).Replace(".webp", ".png"));
+            }
+        }
+
+        public static void ProcessDirectoryToWebp(string directoryPath, string toDirPath)
+        {
+            // Get all .webp files in the directory
+            var webpFiles = Directory.GetFiles(directoryPath, "*.png");
+
+            // Call ResizeImage on each .webp file
+            foreach (var file in webpFiles)
+            {
+                Console.WriteLine($"Processing: {file}");
+                ConvertPngToWebP(file, file.Replace(directoryPath, toDirPath).Replace(".png", ".webp"));
             }
         }
 

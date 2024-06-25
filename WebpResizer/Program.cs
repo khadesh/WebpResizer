@@ -14,7 +14,7 @@ using WebpResizer;
 //ImageConverter.ConvertWebPToPng(webpFilePath, pngFilePath);
 //ImageConverter.ConvertPngToWebP(pngFilePath, webpFilePath);
 
-//ImageConverter.ProcessDirectoryToPng(@"C:\Users\pigsc\OneDrive\デスクトップ\cards\", @"C:\Users\pigsc\OneDrive\デスクトップ\cards\png\");
+ImageConverter.ProcessDirectoryToWebp(@"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\cards\compressed\", @"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\cards\webp\");
 
 //ImageConverter.ProcessDirectoryToPng(@"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\", @"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\pngs\");
 
