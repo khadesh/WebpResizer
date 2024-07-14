@@ -1,8 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using WebpResizer;
 
-
-//ImageResizer.ProcessDirectoryPng(@"C:\Users\pigsc\OneDrive\デスクトップ\avatars\");
+//ImageResizer.ProcessDirectoryPng(@"C:\Users\pigsc\OneDrive\デスクトップ\media\avatars\");
 
 //ImageSplitter.SplitImageIntoQuadrants(@"C:\Users\pigsc\OneDrive\デスクトップ\img\coins.webp");
 
@@ -14,11 +13,11 @@ using WebpResizer;
 //ImageConverter.ConvertWebPToPng(webpFilePath, pngFilePath);
 //ImageConverter.ConvertPngToWebP(pngFilePath, webpFilePath);
 
-ImageConverter.ProcessDirectoryToWebp(@"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\cards\compressed\", @"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\cards\webp\");
+//ImageConverter.ProcessDirectoryToWebp(@"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\cards\compressed\", @"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\cards\webp\");
 
-//ImageConverter.ProcessDirectoryToPng(@"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\", @"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\pngs\");
+//ImageConverter.ProcessDirectoryToPng(@"C:\Users\pigsc\OneDrive\デスクトップ\media\logos", @"C:\Users\pigsc\OneDrive\デスクトップ\media\logos\png");
 
-ImageResizer.ResizeImages66Percent(@"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\cards\", @"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\cards\compressed\");
+//ImageResizer.ResizeImages66Percent(@"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\cards\", @"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\cards\compressed\");
 
 //int i = 0;
 //List<string> CardRules = new List<string>() {
