@@ -15,7 +15,10 @@ using WebpResizer;
 
 //ImageConverter.ProcessDirectoryToWebp(@"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\cards\compressed\", @"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\cards\webp\");
 
-//ImageConverter.ProcessDirectoryToPng(@"C:\Users\pigsc\OneDrive\デスクトップ\media\logos", @"C:\Users\pigsc\OneDrive\デスクトップ\media\logos\png");
+ImageConverter.ProcessDirectoryToPng(@"C:\Users\pigsc\OneDrive\デスクトップ\Chess\media\icons", @"C:\Users\pigsc\OneDrive\デスクトップ\Chess\media\icons\pngs");
+
+
+
 
 //ImageResizer.ResizeImages66Percent(@"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\cards\", @"C:\Users\pigsc\OneDrive\デスクトップ\media\bossbattlechess\cards\compressed\");
 

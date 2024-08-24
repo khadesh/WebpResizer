@@ -12,8 +12,21 @@ namespace WebpResizer
             // Load the WebP image
             using (Image image = Image.Load(webpFilePath))
             {
-                // Save the image as PNG
+                // Save the original image as PNG
                 image.Save(pngFilePath, new PngEncoder());
+
+                // Create the second image with a size of 256x256 pixels
+                using (Image resizedImage = image.Clone(x => x.Resize(256, 256)))
+                {
+                    // Modify the file name to add "-256" before the extension
+                    string directory = Path.GetDirectoryName(pngFilePath);
+                    string filenameWithoutExtension = Path.GetFileNameWithoutExtension(pngFilePath);
+                    string extension = Path.GetExtension(pngFilePath);
+                    string newFileName = Path.Combine(directory, filenameWithoutExtension + "-256" + extension);
+
+                    // Save the resized image as PNG
+                    resizedImage.Save(newFileName, new PngEncoder());
+                }
             }
         }
 
